@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: survey
+      MYSQL_ROOT_PASSWORD: survey
+      # MYSQL_DATABASE: mc
+      # MYSQL_USER: mcuser
+      # MYSQL_PASSWORD: hola123
+    ports:
+      - "3306:3306"  
+    volumes:
+      - ./database/db_data:/var/lib/mysql
+      - ./database:/tmp/database
+    command: mysqld --init-file="/tmp/database/install_db.sql"
+
+  # adminer:
+  #   image: adminer
+  #   restart: always
+  #   ports:
+  #     - 8081:8080

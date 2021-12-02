@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<entity-mappings ptype="MONOLITH" ppkg="co.edu.javeriana.mc.survey" epkg="model" v="5.4.3" rws="_16303544726032" Pws="_16303544726032" cws="_16303544726032" persistenceUnitName="DEFAULT_PU" sm="false" xs="false" id="_16303544726031" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_2_1.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <entity compositePrimaryKeyClass="ItemPK" abs="true" class="Item" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_16303558126033">
+        <ath>jpavlich</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="title" id="_16303560687903">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="shortName" id="_163111825674278">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="description" id="_163035814791841">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="itemOrder" id="_163111933466285">
+                <xwm/>
+                <xm/>
+            </basic>
+            <basic attribute-type="String" v="true" xvt="" name="defaultValue" id="_163111956747098">
+                <xwm/>
+                <xm/>
+            </basic>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_1630366838521111" v="true" xvt="" name="datatype" id="_163111946420089">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <many-to-one optional="true" primaryKey="false" connected-entity-id="_163035833155542" connected-attribute-id="_1631119679967135" v="true" xvt="" name="survey" id="_1631119679966134">
+                <xwm/>
+                <xm/>
+            </many-to-one>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_16303558126114">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Item.findAll">
+            <query>Select e from Item e</query>
+        </nq>
+        <nq e="false" name="Item.findByTitle">
+            <query>Select q from Item q where q.title=:title</query>
+        </nq>
+        <nq e="false" name="Item.findByDesc">
+            <query>Select q from Item q where q.desc=:desc</query>
+        </nq>
+        <nq e="false" name="Item.findByDescription">
+            <query>Select q from Item q where q.description=:description</query>
+        </nq>
+        <nq e="false" name="Item.findByShortName">
+            <query>Select q from Item q where q.shortName=:shortName</query>
+        </nq>
+        <nq e="false" name="Item.findByShortName">
+            <query>Select q from Item q where q.shortName=:shortName</query>
+        </nq>
+        <nq e="false" name="Question.findByItemOrder">
+            <query>Select q from Item q where q.itemOrder=:itemOrder</query>
+        </nq>
+        <nq e="false" name="Item.findByDefaultValue">
+            <query>Select i from Item i where i.defaultValue=:defaultValue</query>
+        </nq>
+        <inheritance strategy="SINGLE_TABLE"/>
+        <discriminator-column name="type" discriminator-type="INTEGER" column-definition="" length="30"/>
+    </entity>
+    <entity compositePrimaryKeyClass="SingleLineQuestionPK" abs="false" class="SingleLineQuestion" superclassId="_16303558126033" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_16303565474963">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="SingleLineQuestion.findAll">
+            <query>Select e from SingleLineQuestion e</query>
+        </nq>
+        <nq e="false" name="SingleLineQuestion.findByEntity">
+            <query>Select s from SingleLineQuestion s where s.entity=:entity</query>
+        </nq>
+        <nq e="false" name="SingleLineQuestion.findByDatatype">
+            <query>Select s from SingleLineQuestion s where s.datatype=:datatype</query>
+        </nq>
+        <discriminator-value>1</discriminator-value>
+    </entity>
+    <entity compositePrimaryKeyClass="MultipleChoicePK" abs="true" class="MultipleChoice" superclassId="_16303558126033" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_16303565843699">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="MultipleChoice.findAll">
+            <query>Select e from MultipleChoice e</query>
+        </nq>
+        <nq e="false" name="MultipleChoice.findByMultipleAnswers">
+            <query>Select m from MultipleChoice m where m.multipleAnswers=:multipleAnswers</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="SurveyPK" abs="false" class="Survey" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_163035833155542">
+        <ath>jpavlich</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="title" id="_1630364312773205">
+                <xwm/>
+                <xm/>
+            </basic>
+            <one-to-many orp="false" collection-type="java.util.List" cit="java.util.ArrayList" connected-entity-id="_16303558126033" connected-attribute-id="_1631119679966134" v="true" xvt="" name="items" id="_1631119679967135">
+                <xwm/>
+                <xm/>
+            </one-to-many>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_163035833155643">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Survey.findAll">
+            <query>Select e from Survey e</query>
+        </nq>
+        <nq e="false" name="Survey.findByTitle">
+            <query>Select s from Survey s where s.title=:title</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="SingleSelectionMultipleChoicePK" abs="false" class="SingleSelectionMultipleChoice" superclassId="_16303565843699" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_163036249100243">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="SingleSelectionMultipleChoice.findAll">
+            <query>Select e from SingleSelectionMultipleChoice e</query>
+        </nq>
+        <discriminator-value>2</discriminator-value>
+    </entity>
+    <entity compositePrimaryKeyClass="MultipleSelectionMultipleChoicePK" abs="false" class="MultipleSelectionMultipleChoice" superclassId="_16303565843699" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_163036250896246">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="MultipleSelectionMultipleChoice.findAll">
+            <query>Select e from MultipleSelectionMultipleChoice e</query>
+        </nq>
+        <discriminator-value>3</discriminator-value>
+    </entity>
+    <entity compositePrimaryKeyClass="DatatypePK" abs="false" class="Datatype" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_1630366838521111">
+        <ath>jpavlich</ath>
+        <attributes>
+            <basic attribute-type="String" v="true" xvt="" name="name" id="_1630366845332114">
+                <xwm/>
+                <xm/>
+            </basic>
+            <id attribute-type="Long" v="true" xvt="" name="id" id="_1630366838695112">
+                <xwm/>
+                <xm/>
+                <generated-value strategy="DEFAULT"/>
+            </id>
+        </attributes>
+        <nq e="false" name="Datatype.findAll">
+            <query>Select e from Datatype e</query>
+        </nq>
+        <nq e="false" name="Datatype.findByName">
+            <query>Select d from Datatype d where d.name=:name</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="MultiLineQuestionPK" abs="false" class="MultiLineQuestion" superclassId="_16303558126033" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_163111949330790">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="MultiLineQuestion.findAll">
+            <query>Select e from MultiLineQuestion e</query>
+        </nq>
+    </entity>
+    <entity compositePrimaryKeyClass="ChoicePK" abs="false" class="Choice" superclassId="_16303558126033" v="true" jbn="false" xre="false" m="false" rootElement="_16303544726031" id="_163111953953694">
+        <ath>jpavlich</ath>
+        <attributes/>
+        <nq e="false" name="Choice.findAll">
+            <query>Select e from Choice e</query>
+        </nq>
+    </entity>
+    <c>
+        <ct>java.util.List</ct>
+        <ct>java.util.Set</ct>
+        <ct>java.util.Map</ct>
+        <ct>java.util.Collection</ct>
+        <cit>java.util.ArrayList</cit>
+        <cit>java.util.LinkedList</cit>
+        <cit>java.util.HashSet</cit>
+        <cit>java.util.TreeSet</cit>
+        <cit>java.util.HashMap</cit>
+    </c>
+    <wsl>
+        <ws n="Main" id="_16303544726032">
+            <i ref="_163036249100243" x="722" y="610"/>
+            <i ref="_16303565474963" x="225" y="394"/>
+            <i ref="_16303558126033" x="809" y="65"/>
+            <i ref="_163035833155542" x="195" y="82"/>
+            <i ref="_16303565843699" x="1005" y="446"/>
+            <i ref="_163036250896246" x="1082" y="621"/>
+            <i ref="_163111953953694" x="747" y="446"/>
+            <i ref="_1630366838521111" x="207" y="250"/>
+            <i ref="_163111949330790" x="451" y="446"/>
+        </ws>
+    </wsl>
+</entity-mappings>
